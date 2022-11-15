@@ -23,6 +23,8 @@ class CustomDateRangePicker extends StatefulWidget {
 
   final DateTime? initialEndDate;
 
+  final String dateFormat;
+
   final Function(DateTime, DateTime) onApplyClick;
 
   final Function() onCancelClick;
@@ -36,6 +38,7 @@ class CustomDateRangePicker extends StatefulWidget {
     required this.minimumDate,
     required this.maximumDate,
     required this.onCancelClick,
+    this.dateFormat = 'EEE, dd MMM',
   }) : super(key: key);
 
   @override
@@ -124,7 +127,7 @@ class CustomDateRangePickerState extends State<CustomDateRangePicker>
                                 ),
                                 Text(
                                   startDate != null
-                                      ? DateFormat('EEE, dd MMM')
+                                      ? DateFormat(widget.dateFormat)
                                           .format(startDate!)
                                       : '--/-- ',
                                   style: TextStyle(
@@ -159,7 +162,7 @@ class CustomDateRangePickerState extends State<CustomDateRangePicker>
                                 ),
                                 Text(
                                   endDate != null
-                                      ? DateFormat('EEE, dd MMM')
+                                      ? DateFormat(widget.dateFormat)
                                           .format(endDate!)
                                       : '--/-- ',
                                   style: TextStyle(
